@@ -10,7 +10,7 @@ interface DocumentsProps {
 
 const lsKey = 'selected-docs'
 
-export default (props: DocumentsProps) => {
+export default function Documents(props: DocumentsProps) {
 
   const { documents } = props
 

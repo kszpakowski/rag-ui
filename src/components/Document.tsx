@@ -7,7 +7,7 @@ interface DocumentProps {
     onRemove: (id: string) => any,
 }
 
-export default (props: DocumentProps) => {
+export default function Document(props: DocumentProps) {
 
 
     const { id, name, title, type } = props.doc
