@@ -47,7 +47,7 @@ export default function Documents(props: DocumentsProps) {
       localStorage.setItem(lsKey, JSON.stringify([id]))
       updateSelected()
     } else {
-      const value = JSON.parse(selected)
+      const value = JSON.parse(selected) as string[]
       if (!value.some(v => v === id)) {
         value.push(id)
         localStorage.setItem(lsKey, JSON.stringify(value))
