@@ -72,7 +72,7 @@ export default function Documents(props: DocumentsProps) {
   return (
     <div className="w-full">
       <div className="flex-col space-y-4">
-        <div className="flex w-full justify-between align-middle">
+        <div className="flex w-full justify-between items-center">
           <div>
             <p className="text-lg">{docs.length} Documents</p>
           </div>

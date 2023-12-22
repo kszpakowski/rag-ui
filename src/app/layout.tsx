@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
+import UserButton from '@/components/UserButton'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,11 +19,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className='flex w-full p-6 space-x-6 border-b'>
-          <Link href='/'>GTC RAG</Link>
-          <Link href='/ask'>Ask</Link>
-          <Link href='/documents-library'>Library</Link>
+        <div className='flex w-full py-2  border-b justify-center'>
+          <div className='flex w-5/6 justify-between items-center'>
+            <div className='space-x-6'>
+              <Link className="text-xl" href='/'>GTC RAG</Link>
+              <Link href='/ask'>Ask</Link>
+              <Link href='/documents-library'>Library</Link>
+            </div>
+            <div className='self-end'>
+              <UserButton />
+            </div>
+          </div>
+
         </div>
+
         {children}
       </body>
     </html>
