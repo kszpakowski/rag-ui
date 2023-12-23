@@ -24,7 +24,7 @@ export default function DocumentResponse(props: DocumentResponseProps) {
             .then(res => res.data)
             .then(setResponse)
             .then(() => setLoading(false))
-    }, [])
+    }, [props.docId])
 
     const getMetadata = () => {
         if (response) {

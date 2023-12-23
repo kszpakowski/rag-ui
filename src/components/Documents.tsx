@@ -33,10 +33,10 @@ export default function Documents(props: DocumentsProps) {
 
   useEffect(() => {
     console.log("Setting docs", searchString)
-    const filtered = documents.filter(d => 
+    const filtered = documents.filter(d =>
       d.name.toLowerCase().includes(searchString.toLowerCase()) && (!onlySelected || selected.some(x => x === d.id)))
-      setDocs(filtered)
-  }, [searchString, selected, onlySelected])
+    setDocs(filtered)
+  }, [searchString, selected, onlySelected, documents])
 
   const addDoc = (id: string) => {
     console.log("Adding document", id)
