@@ -30,7 +30,7 @@ export default function DocumentResponse(props: DocumentResponseProps) {
         if (response) {
             console.log(response)
             if (response.metadata) {
-                return Object.values(response.metadata)[0].name as string
+                return (Object as any).values(response.metadata)[0].name
             }
         }
         return "x"

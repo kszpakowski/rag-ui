@@ -6,9 +6,7 @@ export async function GET(request: NextRequest) {
     const docId = request.nextUrl.searchParams.get('docId')
     const session = await auth()
     if (!session) {
-        return {
-            "error": "unauthorized"
-        }
+        throw new Error('Unauthorized')
     }
 
     const apiUrl = process.env.RAG_API_URL
