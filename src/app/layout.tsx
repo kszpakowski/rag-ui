@@ -4,6 +4,7 @@ import './globals.css'
 import Link from 'next/link'
 import UserButton from '@/components/UserButton'
 import { auth } from "@/auth"
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -41,6 +42,7 @@ export default async function RootLayout({
         </div>
 
         {children}
+        <Analytics />
       </body>
     </html>
   )
