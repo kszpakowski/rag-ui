@@ -76,7 +76,7 @@ export default function Documents(props: DocumentsProps) {
         <div className="flex w-full justify-between items-center">
           <p>{docs.length} Documents</p>
           <div>
-            <label for="selected">Only selected</label> <input id="selected" type="checkbox" onChange={(e) => setOnlySelected(e.target.checked ? true : false)} />
+            <label htmlFor="selected">Only selected</label> <input id="selected" type="checkbox" onChange={(e) => setOnlySelected(e.target.checked ? true : false)} />
           </div>
         </div>
       </div>
