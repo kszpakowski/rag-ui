@@ -1,12 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
 import UserButton from '@/components/UserButton'
 import { auth } from "@/auth"
 import { Analytics } from '@vercel/analytics/react';
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,8 +20,8 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className='flex w-full py-2  border-b justify-center'>
+      <body className="font-mono">
+        <div className='flex w-full py-2 border-b justify-center'>
           <div className='flex w-5/6 justify-between items-center'>
             <div className='space-x-6'>
               <Link className="text-xl" href='/'>GTC RAG</Link>

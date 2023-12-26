@@ -68,21 +68,16 @@ export default function Documents(props: DocumentsProps) {
   }
 
 
-  // TODO improve filters layout
   return (
     <div className="w-full">
-      <div className="flex-col space-y-4">
+      <div className="flex-col space-y-2">
+        <p className="text-lg">Search</p>
+        <input className="w-full text-black p-2 rounded" onChange={(e) => setSearchString(e.target.value)}></input>
         <div className="flex w-full justify-between items-center">
+          <p>{docs.length} Documents</p>
           <div>
-            <p className="text-lg">{docs.length} Documents</p>
+            <label for="selected">Only selected</label> <input id="selected" type="checkbox" onChange={(e) => setOnlySelected(e.target.checked ? true : false)} />
           </div>
-          <div className="space-x-2">
-            <span>Search</span>
-            <input className="text-black p-2 rounded" onChange={(e) => setSearchString(e.target.value)}></input>
-          </div>
-        </div>
-        <div>
-          Only Selected <input type="checkbox" onChange={(e) => setOnlySelected(e.target.checked ? true : false)} />
         </div>
       </div>
       <div className="flex-col space-y-4 mt-4">

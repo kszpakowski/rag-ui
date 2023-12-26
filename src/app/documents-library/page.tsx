@@ -22,8 +22,8 @@ export default async function Home() {
     const documents = await fetchDocuments()
     
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+        <main className="flex w-full min-h-screen p-8 md:p-24 md:pt-8 justify-center">
+            <div className="w-full max-w-5xl text-sm">
                 <Documents documents={documents.slice(0,1000)}></Documents>
             </div>
         </main>
