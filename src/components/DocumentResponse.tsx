@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 
 interface DocumentResponseProps {
     docId: number
+    prompt: string
 }
 
 interface QuestionDto {
@@ -24,10 +25,12 @@ interface QuestionDto {
 
 export default function DocumentResponse(props: DocumentResponseProps) {
 
+    const { docId, prompt } = props
+
     const [response, setResponse] = useState({} as QuestionDto)
 
-    const fetchData = async (docId: number) => {
-        const res = await fetch(`/api/ask?docId=${docId}`)
+    const fetchData = async (docId: number, prompt: string) => {
+        const res = await fetch(`/api/ask?docId=${docId}&prompt=${encodeURIComponent(prompt)}`)
         if (!res.ok) {
             throw new Error(`Failed to fetch data - ${res.status}`)
         }
@@ -37,16 +40,16 @@ export default function DocumentResponse(props: DocumentResponseProps) {
     useEffect(() => {
         const intervalId = setInterval(async () => {
             if (!response.answer) {
-                const data = await fetchData(props.docId)
+                const data = await fetchData(docId, prompt)
                 setResponse(data)
             }
         }, 3000)
         return () => clearInterval(intervalId);
-    }, [props.docId, response])
+    }, [docId, prompt, response])
 
     useEffect(() => {
-        fetchData(props.docId).then(setResponse)
-    }, [props.docId])
+        fetchData(docId, prompt).then(setResponse)
+    }, [docId, prompt])
 
     return <div className="border border-gray-300 p-4 rounded-xl min-h-500">
         <div className="space-y-4">
