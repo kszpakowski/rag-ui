@@ -56,8 +56,11 @@ export default function DocumentResponse(props: DocumentResponseProps) {
                 <div className="flex flex-wrap gap-2">
                     <p className="border border-green-300 p-1 rounded">{response.document.doc_name}</p>
                     <p className="border border-green-300 p-1 rounded">{response.document.prod_code}</p>
-                    <p className="border border-green-300 p-1 rounded">Qid: {response.id}</p>
-                    <p className="border border-green-300 p-1 rounded">{response.status}</p>
+                    {response.status !== 'Answered' && <>
+                        <p className="border border-green-300 p-1 rounded">Qid: {response.id}</p>
+                        <p className="border border-green-300 p-1 rounded">{response.status}</p>
+                    </>
+                    }
                 </div>
             </>}
 
