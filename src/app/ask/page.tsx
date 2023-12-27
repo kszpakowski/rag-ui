@@ -20,18 +20,16 @@ export default function AskPage() {
 
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm space-y-8">
-                <p>{prompt}</p>
-                <div className="flex-column space-y-4">
-                    {
-                        selected.map(id =>
-                            <div key={id}>
-                                <DocumentResponse docId={id} />
-                            </div>)
-                    }
-                </div>
+        <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm space-y-8">
+            <p>{prompt}</p>
+            <div className="flex-column space-y-4">
+                {
+                    selected.map(id =>
+                        <div key={id}>
+                            <DocumentResponse docId={id} />
+                        </div>)
+                }
             </div>
-        </main>
+        </div>
     )
 }

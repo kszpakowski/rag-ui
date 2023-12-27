@@ -38,7 +38,7 @@ export default function Documents(props: DocumentsProps) {
     setDocs(filtered)
   }, [searchString, selected, onlySelected, documents])
 
-  const addDoc = (id: string) => {
+  const addDoc = (id: number) => {
     console.log("Adding document", id)
 
     const selected = localStorage.getItem(lsKey)
@@ -47,7 +47,7 @@ export default function Documents(props: DocumentsProps) {
       localStorage.setItem(lsKey, JSON.stringify([id]))
       updateSelected()
     } else {
-      const value = JSON.parse(selected) as string[]
+      const value = JSON.parse(selected) as number[]
       if (!value.some(v => v === id)) {
         value.push(id)
         localStorage.setItem(lsKey, JSON.stringify(value))
@@ -56,12 +56,12 @@ export default function Documents(props: DocumentsProps) {
     }
   }
 
-  const removeDoc = (id: string) => {
+  const removeDoc = (id: number) => {
     console.log("Removing document", id)
 
     const selected = localStorage.getItem(lsKey)
     if (selected) {
-      const value = JSON.parse(selected) as string[]
+      const value = JSON.parse(selected) as number[]
       localStorage.setItem(lsKey, JSON.stringify(value.filter(selectedId => selectedId !== id)))
       updateSelected()
     }

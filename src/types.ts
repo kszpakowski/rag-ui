@@ -1,7 +1,6 @@
 export interface DocumentModel {
-    id: string,
+    id: number,
     name: string,
     title: string,
-    type: string,
-    path: string
+    type: string
 }

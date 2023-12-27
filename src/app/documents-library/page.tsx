@@ -1,31 +1,45 @@
 import Documents from '@/components/Documents'
+import { DocumentModel } from '@/types'
 
-async function fetchDocuments() {
+interface DocumentDto {
+    id: number
+    body_id: number
+    doc_name: string
+    prod_code: string
+    doc_title: string
+    type_name: string
+}
+
+async function fetchDocuments(): Promise<DocumentModel[]> {
     console.log("Fetching documents")
     const apiUrl = process.env.RAG_API_URL
-    const res = await fetch(apiUrl + '/api/list_docs/', {
+    const res = await fetch(apiUrl + '/documents/?limit=2000', {
         headers: {
             "X-API-KEY": process.env.RAG_API_KEY!
         }
     })
 
     if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
         throw new Error('Failed to fetch data')
     }
 
-    return res.json()
+    const documents = await res.json() as DocumentDto[]
+
+    return documents.map((d) => ({
+        id: d.id,
+        name: d.doc_name,
+        title: d.doc_title,
+        type: d.type_name,
+    }))
 }
 
 export default async function Home() {
 
     const documents = await fetchDocuments()
-    
+
     return (
-        <main className="flex w-full min-h-screen p-8 md:p-24 md:pt-8 justify-center">
-            <div className="w-full max-w-5xl text-sm">
-                <Documents documents={documents.slice(0,1000)}></Documents>
-            </div>
-        </main>
+        <div className="w-full max-w-5xl text-sm">
+            <Documents documents={documents}></Documents>
+        </div>
     )
 }

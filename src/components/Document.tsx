@@ -3,8 +3,8 @@ import { DocumentModel } from "@/types"
 interface DocumentProps {
     doc: DocumentModel,
     selected: boolean,
-    onAdd: (id: string) => any,
-    onRemove: (id: string) => any,
+    onAdd: (id: number) => any,
+    onRemove: (id: number) => any,
 }
 
 export default function Document(props: DocumentProps) {
@@ -22,7 +22,9 @@ export default function Document(props: DocumentProps) {
                     <span className="border border-green-300 p-1 rounded">{type}</span>
                 </div>
                 <div>
-                    {selected ? <span className="border border-red-300 p-1 rounded cursor-pointer hover:bg-red-900" onClick={() => onRemove(id)}>Remove</span> : <span className="border border-green-300 p-1 rounded cursor-pointer hover:bg-green-900" onClick={() => onAdd(id)}>Add</span>}
+                    {selected ?
+                        <span className="border border-red-300 p-1 rounded cursor-pointer hover:bg-red-900" onClick={() => onRemove(id)}>Remove</span> :
+                        <span className="border border-green-300 p-1 rounded cursor-pointer hover:bg-green-900" onClick={() => onAdd(id)}>Add</span>}
                 </div>
             </div>
         </div>
