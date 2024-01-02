@@ -21,7 +21,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="font-mono">
-        <div className='flex w-full py-2 border-b justify-center sticky top-0 bg-black z-40'>
+        <div className='flex w-full py-2 border-b justify-center sticky top-0 bg-gray-300 dark:bg-black z-40'>
           <div className='flex w-5/6 justify-between items-center'>
             <div className='space-x-6'>
               <Link className="text-xl" href='/'>GTC RAG</Link>
